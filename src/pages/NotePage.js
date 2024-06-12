@@ -1,11 +1,16 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import notes from "../assets/data";
 
-const NotePage = () => {
+function NotePage() {
+  let { id } = useParams();
+
+  let note = notes.find((note) => note.id == id);
   return (
     <div>
-      <h2>Single note details</h2>
+      <p>{note?.body}</p>
     </div>
   );
-};
+}
 
 export default NotePage;

@@ -12,7 +12,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<NotesPage />} />
-          <Route path="/note/" element={<NotePage />} />
+          <Route path="/note/:id" element={<NotePage />} />
         </Routes>
       </div>
     </BrowserRouter>
