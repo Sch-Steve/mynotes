@@ -6,8 +6,14 @@ function NotePage() {
   let { id } = useParams();
 
   let note = notes.find((note) => note.id == id);
+
   return (
-    <div>
+    <div className="note">
+        <div className="note-header">
+
+        </div>
+
+        <textarea value={note?.body}></textarea>
       <p>{note?.body}</p>
     </div>
   );
