@@ -21,7 +21,6 @@ function NotePage() {
         </div>
 
         <textarea value={note?.body}></textarea>
-      <p>{note?.body}</p>
     </div>
   );
 }
