@@ -29,6 +29,17 @@ function NotePage() {
     });
   };
 
+  let deleteNote = async () => {
+    await fetch(`http://127.0.0.1:5000/notes/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(note),
+    });
+    navigate("/");
+  };
+
   let handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default Link behavior
     await updateNote();
@@ -43,6 +54,7 @@ function NotePage() {
             <ArrowLeft />
           </a>
         </h3>
+        <button onClick={deleteNote}>Delete</button>
       </div>
 
       <textarea
