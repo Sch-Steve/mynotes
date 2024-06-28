@@ -1,36 +1,56 @@
-import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
-//import notes from "../assets/data";
-import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { ReactComponent as ArrowLeft } from "../assets/arrow-left.svg";
 import { Link } from "react-router-dom";
 
 function NotePage() {
   let { id } = useParams();
+  let navigate = useNavigate();
 
-  let [note, setNote] = useState(null)
+  let [note, setNote] = useState(null);
 
   useEffect(() => {
-    getNote()
-  }, [{id}])
-  //let note = notes.find((note) => note.id == id);
+    getNote();
+  }, [id]);
+
   let getNote = async () => {
-    let response = await fetch(`http://127.0.0.1:5000/notes/${id}`)
-    let data = await response.json()
-    setNote(data)
-  }
+    let response = await fetch(`http://127.0.0.1:5000/notes/${id}`);
+    let data = await response.json();
+    setNote(data);
+  };
+
+  let updateNote = async () => {
+    await fetch(`http://127.0.0.1:5000/notes/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...note, updated: new Date() }),
+    });
+  };
+
+  let handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent the default Link behavior
+    await updateNote();
+    navigate("/"); // Navigate after the note is updated
+  };
 
   return (
     <div className="note">
+      <div className="note-header">
+        <h3>
+          <a href="/" onClick={handleSubmit}>
+            <ArrowLeft />
+          </a>
+        </h3>
+      </div>
 
-        <div className="note-header">
-          <h3>
-            <Link to={"/"}>
-              <ArrowLeft />
-            </Link>
-          </h3>
-        </div>
-
-        <textarea value={note?.body}></textarea>
+      <textarea
+        onChange={(e) => {
+          setNote({ ...note, body: e.target.value });
+        }}
+        value={note?.body || ""}
+      ></textarea>
     </div>
   );
 }
