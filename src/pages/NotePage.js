@@ -41,9 +41,14 @@ function NotePage() {
   };
 
   let handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent the default Link behavior
+    if (id !== "new" && !note.body) {
+      deleteNote();
+    } else if (id !== "new") {
+      updateNote();
+    }
+    e.preventDefault();
     await updateNote();
-    navigate("/"); // Navigate after the note is updated
+    navigate("/");
   };
 
   return (
