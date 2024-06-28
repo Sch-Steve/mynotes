@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ReactComponent as ArrowLeft } from "../assets/arrow-left.svg";
-import { Link } from "react-router-dom";
 
 function NotePage() {
   let { id } = useParams();
@@ -14,9 +13,20 @@ function NotePage() {
   }, [id]);
 
   let getNote = async () => {
+    if (id === "new") return;
     let response = await fetch(`http://127.0.0.1:5000/notes/${id}`);
     let data = await response.json();
     setNote(data);
+  };
+
+  let createNote = async () => {
+    await fetch(`http://127.0.0.1:5000/notes/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...note, updated: new Date() }),
+    });
   };
 
   let updateNote = async () => {
@@ -41,14 +51,16 @@ function NotePage() {
   };
 
   let handleSubmit = async (e) => {
+    e.preventDefault();
     if (id !== "new" && !note.body) {
       deleteNote();
     } else if (id !== "new") {
-      updateNote();
+      await updateNote();
+      navigate("/");
+    } else if (id === "new" && note !== null) {
+      await createNote();
+      navigate("/");
     }
-    e.preventDefault();
-    await updateNote();
-    navigate("/");
   };
 
   return (
@@ -59,7 +71,11 @@ function NotePage() {
             <ArrowLeft />
           </a>
         </h3>
-        <button onClick={deleteNote}>Delete</button>
+        {id !== "new" ? (
+          <button onClick={deleteNote}>Delete</button>
+        ) : (
+          <button onClick={handleSubmit}>Done</button>
+        )}
       </div>
 
       <textarea
