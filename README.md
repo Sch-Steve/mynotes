@@ -34,13 +34,11 @@ Follow these steps to get the project up and running on your local machine:
 1. **Clone the repository:**
     ```bash
     git clone https://github.com/Sch-Steve/mynotes
-    cd notes-app
+    cd mynotes
     ```
 
-2. **Install dependencies:**
-    ```bash
-    npm install
-    ```
+2. **Install Node.js:**
+    [Nodejs.org](https://nodejs.org/en/download/package-manager)
 
 3. **Install json-server:**
     ```bash
@@ -51,6 +49,7 @@ Follow these steps to get the project up and running on your local machine:
     ```bash
     json-server --watch db.json --port 5000
     ```
+    Make sure that the cloned db.json file is used and not the one that comes with the installation of json-server.
 
 5. **Run the development server:**
     ```bash
