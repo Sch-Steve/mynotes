@@ -25,7 +25,6 @@ Welcome to the Notes App project! This is my first React project, created by fol
 
 ## Requirements
 - Node.js
-- npm
 - json-server 
 
 ## Installation
