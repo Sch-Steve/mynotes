@@ -17,11 +17,14 @@ Welcome to the Notes App project! This is my first React project, created by fol
 - Delete notes
 - Persistent storage using a JSON database
 - Auto-save notes
-- Automatic title generation in notes list 
+- Automatic title generation in notes list
+- Notes counter
 
 
 ## Screenshots
-(Add screenshots of your application here to give users a visual idea of what the app looks like.)
+![Notes list screenshot](listNotes.png "Notes list")
+![Note creation screenshot](createNote.png "Create note")
+![Note edit screenshot](editNote.png "Edit note")
 
 ## Requirements
 - Node.js
