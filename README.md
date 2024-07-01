@@ -31,14 +31,14 @@ Welcome to the Notes App project! This is my first React project, created by fol
 ## Installation
 Follow these steps to get the project up and running on your local machine:
 
-1. **Clone the repository:**
+1. **Install Node.js:**
+    [Nodejs.org](https://nodejs.org/en/download/package-manager)
+   
+2. **Clone the repository:**
     ```bash
     git clone https://github.com/Sch-Steve/mynotes
     cd mynotes
     ```
-
-2. **Install Node.js:**
-    [Nodejs.org](https://nodejs.org/en/download/package-manager)
 
 3. **Install json-server:**
     ```bash
