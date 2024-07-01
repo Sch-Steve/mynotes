@@ -15,7 +15,10 @@ Welcome to the Notes App project! This is my first React project, created by fol
 - View existing notes
 - Edit notes
 - Delete notes
-- Persistent storage using a JSON database in development setup
+- Persistent storage using a JSON database
+- Auto-save notes
+- Automatic title generation in notes list 
+
 
 ## Screenshots
 (Add screenshots of your application here to give users a visual idea of what the app looks like.)
@@ -23,7 +26,7 @@ Welcome to the Notes App project! This is my first React project, created by fol
 ## Requirements
 - Node.js
 - npm
-- json-server (for development setup)
+- json-server 
 
 ## Installation
 Follow these steps to get the project up and running on your local machine:
