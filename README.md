@@ -19,6 +19,7 @@ Welcome to the Notes App project! This is my first React project, created by fol
 - Auto-save notes
 - Automatic title generation in notes list
 - Notes counter
+- Notes last edit date
 
 
 ## Screenshots
